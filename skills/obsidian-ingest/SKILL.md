@@ -15,6 +15,18 @@ The v1 transport is direct filesystem access only.
 3. Read `wiki/index.md` to avoid duplicate pages.
 4. Check `.raw/.manifest.json` for unchanged sources when `scripts/manifest.py` is available.
 
+## Inbox Flow
+
+When the user asks to organize loose notes, check `wiki/00.inbox/` first.
+
+For each Markdown file in `wiki/00.inbox/`:
+
+1. Read the note completely.
+2. Decide whether it is raw source material, a literature note, a permanent note, or an index/topic map.
+3. Move or rewrite the maintained note under `wiki/sources/`, `wiki/literature/`, `wiki/permanent/`, or `wiki/indexes/`.
+4. Update `wiki/index.md`, prepend one entry to `wiki/log.md`, and refresh `wiki/hot.md`.
+5. Leave `wiki/00.inbox/` empty only after the material has been safely represented elsewhere.
+
 ## Single Source Flow
 
 For each source:

@@ -4,7 +4,7 @@
 
 This vault is designed for real note-taking: capture first, organize later.
 
-You can throw rough thoughts into `wiki/hot.md`, store old notes and pasted material in `wiki/sources/`, and gradually turn the useful pieces into literature notes, permanent notes, and topic indexes. The goal is not to make you perfectly categorize every idea upfront. The goal is to give messy thinking a place to land, then help it become durable knowledge over time.
+You can drop loose Markdown notes into `wiki/00.inbox/`, keep the current working context in `wiki/hot.md`, and gradually turn the useful pieces into source notes, literature notes, permanent notes, and topic indexes. The goal is not to make you perfectly categorize every idea upfront. The goal is to give messy thinking a place to land, then help it become durable knowledge over time.
 
 > Educational project notice: this project is experimental software for learning, research, and personal knowledge-management workflows. It is provided as-is under Apache-2.0. You are responsible for how you use it, the notes you ingest, and any decisions you make from generated wiki content.
 
@@ -12,13 +12,15 @@ You can throw rough thoughts into `wiki/hot.md`, store old notes and pasted mate
 
 Use the vault like a lightweight thinking workflow, not a filing bureaucracy:
 
-1. Capture anything quickly in `wiki/hot.md`.
-   Write random thoughts, rough notes, reminders, ideas, and unfinished fragments without stopping to decide where they belong.
-2. Preserve old or messy material in `wiki/sources/`.
-   Drop in old notes, copied documents, research dumps, or unprocessed material so the vault becomes useful immediately.
-3. Process notes gradually.
+1. Capture loose notes in `wiki/00.inbox/`.
+   Drop rough Markdown files, call notes, meeting notes, reminders, ideas, drafts, and unfinished fragments here without stopping to decide where they belong.
+2. Keep active context in `wiki/hot.md`.
+   Use this as the compact "what am I working on now?" page that Codex can refresh after setup, ingest, query, or lint work.
+3. Preserve old or messy material in `wiki/sources/`.
+   Move old notes, copied documents, research dumps, or unprocessed material here once they are recognized as source material.
+4. Process notes gradually.
    Move notes from books, videos, articles, podcasts, research, or conversations into `wiki/literature/`. Distill long-term insights and personal ideas into `wiki/permanent/`.
-4. Build maps of knowledge in `wiki/indexes/`.
+5. Build maps of knowledge in `wiki/indexes/`.
    Create topic maps and navigation pages for areas like AI, health, business ideas, projects, or anything else you want to think about over time.
 
 The folders are not rules. They are a lightweight path from fast capture to organized knowledge.
@@ -35,7 +37,8 @@ Large language model sessions are powerful, but they forget context unless you g
 
 This clean-room Codex-native plugin helps Codex act like a wiki maintainer:
 
-- `wiki/hot.md` stores the latest working context and scratchpad material.
+- `wiki/hot.md` stores the latest active working context.
+- `wiki/00.inbox/` gives users a visible place to drop loose Markdown notes before deciding what they are.
 - `wiki/sources/` preserves raw, old, pasted, or unprocessed material.
 - `wiki/literature/`, `wiki/permanent/`, and `wiki/indexes/` support the zettelkasten path from source notes to durable ideas and topic maps.
 - Other modes can also create folders such as `wiki/concepts/`, `wiki/entities/`, `wiki/questions/`, `wiki/maps/`, or PARA folders.
@@ -58,6 +61,7 @@ This repository is a clean-room Codex-native implementation:
 ## What It Does
 
 - Sets up a ready-to-open Obsidian vault.
+- Creates `wiki/00.inbox/` as the default drop zone for loose notes.
 - Leads naturally with `zettelkasten` mode while still supporting `generic`, `lyt`, and `para` modes.
 - Ingests Markdown/text sources into linked wiki pages.
 - Builds a lightweight retrieval index for cited answers.
@@ -108,7 +112,19 @@ C:\path\to\Test_Vault
 
 ### 4. Ingest sample Markdown files
 
-Ask Codex:
+For your own notes, the simplest first step is to drop loose `.md` files into:
+
+```text
+C:\path\to\Test_Vault\wiki\00.inbox
+```
+
+Then ask Codex:
+
+```text
+Organize the loose notes in C:\path\to\Test_Vault\wiki\00.inbox into my Obsidian wiki.
+```
+
+For external sample data, ask Codex:
 
 ```text
 Ingest all Markdown files from C:\path\to\Test_Data into my Obsidian wiki at C:\path\to\Test_Vault.
@@ -117,6 +133,7 @@ Ingest all Markdown files from C:\path\to\Test_Data into my Obsidian wiki at C:\
 After ingesting 50 files, a healthy test vault should look roughly like:
 
 ```text
+wiki/00.inbox: ready for loose notes
 wiki/sources: 50 source pages
 .raw/.manifest.json: 50 tracked source entries
 retrieval index: refreshed
@@ -126,6 +143,12 @@ hot cache: points to the latest ingest
 ```
 
 ## Example Codex Prompts
+
+Organize loose notes from the inbox:
+
+```text
+Organize the Markdown notes in C:\path\to\Test_Vault\wiki\00.inbox into sources, literature notes, permanent notes, and indexes.
+```
 
 Query the wiki with citations:
 
@@ -178,6 +201,7 @@ vault/
 |   |-- log.md
 |   |-- hot.md
 |   |-- overview.md
+|   |-- 00.inbox/
 |   |-- sources/
 |   |-- literature/
 |   |-- permanent/
@@ -193,9 +217,9 @@ vault/
 `-- .obsidian/
 ```
 
-In zettelkasten mode, `wiki/hot.md`, `wiki/sources/`, `wiki/literature/`, `wiki/permanent/`, and `wiki/indexes/` form the main user workflow. The plugin also supports `generic`, `lyt`, and `para` modes, which may add or emphasize other folders such as `wiki/concepts/`, `wiki/entities/`, `wiki/questions/`, `wiki/maps/`, `wiki/projects/`, `wiki/areas/`, `wiki/resources/`, and `wiki/archive/`.
+In zettelkasten mode, `wiki/00.inbox/`, `wiki/hot.md`, `wiki/sources/`, `wiki/literature/`, `wiki/permanent/`, and `wiki/indexes/` form the main user workflow. The plugin also supports `generic`, `lyt`, and `para` modes, which may add or emphasize other folders such as `wiki/concepts/`, `wiki/entities/`, `wiki/questions/`, `wiki/maps/`, `wiki/projects/`, `wiki/areas/`, `wiki/resources/`, and `wiki/archive/`.
 
-`.raw/` is treated as source storage for ingested files. Codex writes maintained wiki notes under `wiki/`.
+`wiki/00.inbox/` is the user-facing drop zone for loose notes. `.raw/` is treated as internal source storage for ingested files. Codex writes maintained wiki notes under `wiki/`.
 
 ## Helper Scripts
 
@@ -215,12 +239,13 @@ python scripts\dashboard.py C:\path\to\vault --json
 
 ## Real-Life Workflow
 
-1. Capture rough thoughts in `wiki/hot.md` whenever you need a fast place to write.
-2. Put old notes, exported docs, copied Markdown, and unprocessed material in `wiki/sources/`.
-3. Ask Codex to set up or detect your Obsidian wiki vault and ingest source folders when useful.
-4. Gradually move useful material into `wiki/literature/`, `wiki/permanent/`, and `wiki/indexes/`.
-5. Open Obsidian to inspect the generated graph, folders, and links.
-6. Ask Codex questions against the wiki, lint the vault, and save important conversations.
+1. Drop loose Markdown files into `wiki/00.inbox/` whenever you need a fast place to put them.
+2. Use `wiki/hot.md` for the current active context, not as a folder for many files.
+3. Ask Codex to organize `wiki/00.inbox/` when notes start to pile up.
+4. Let raw or reference material move into `wiki/sources/`.
+5. Gradually turn useful material into `wiki/literature/`, `wiki/permanent/`, and `wiki/indexes/`.
+6. Open Obsidian to inspect the generated graph, folders, and links.
+7. Ask Codex questions against the wiki, lint the vault, and save important conversations.
 
 Obsidian remains the place you browse, edit, and visualize. Codex becomes the assistant that files, links, retrieves, and audits.
 

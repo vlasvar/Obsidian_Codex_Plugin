@@ -21,7 +21,11 @@ vault/
 |   |-- log.md
 |   |-- hot.md
 |   |-- overview.md
+|   |-- 00.inbox/
 |   |-- sources/
+|   |-- literature/
+|   |-- permanent/
+|   |-- indexes/
 |   |-- entities/
 |   |-- concepts/
 |   |-- questions/
@@ -33,6 +37,7 @@ vault/
 
 `.raw/` contains source material and should not be edited except for `.raw/.manifest.json`.
 `wiki/` is the maintained knowledge layer.
+`wiki/00.inbox/` is the user-facing drop zone for loose Markdown notes that have not been categorized yet.
 
 ## Setup Workflow
 
@@ -41,10 +46,11 @@ vault/
 3. If the user requested LYT, PARA, or Zettelkasten, pass `--mode lyt`, `--mode para`, or `--mode zettelkasten`.
 4. If the setup helper is not available, fall back to `python scripts/detect_vault.py <vault-path> --create`.
 5. Tell the user to open the folder in Obsidian as a vault.
+6. Tell the user they can drop loose notes into `wiki/00.inbox/` and ask Codex to organize the inbox later.
 
 ## Hot Cache
 
-`wiki/hot.md` is a compact recent-context cache. Update it after setup, ingestion, substantial queries, and lint reports.
+`wiki/hot.md` is a compact recent-context cache, not a folder for loose files. Update it after setup, ingestion, substantial queries, and lint reports.
 
 Keep it short and overwrite it rather than turning it into a journal.
 

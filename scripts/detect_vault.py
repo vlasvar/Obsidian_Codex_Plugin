@@ -11,7 +11,11 @@ CORE_DIRS = [
     ".raw",
     ".obsidian",
     "wiki",
+    "wiki/00.inbox",
     "wiki/sources",
+    "wiki/literature",
+    "wiki/permanent",
+    "wiki/indexes",
     "wiki/entities",
     "wiki/concepts",
     "wiki/questions",
@@ -37,9 +41,9 @@ def hot_cache_template() -> str:
         "## Last Updated\n"
         "Vault scaffolded or verified.\n\n"
         "## Key Recent Facts\n"
-        "- The vault is ready for source ingestion.\n\n"
+        "- The vault is ready for loose notes in `wiki/00.inbox/` and source ingestion.\n\n"
         "## Recent Changes\n"
-        "- Core wiki folders and files are present.\n\n"
+        "- Core wiki folders, inbox, and files are present.\n\n"
         "## Active Threads\n"
         "- None yet.\n"
     )

@@ -12,7 +12,7 @@ Answer from the maintained wiki, not from general memory when the vault has rele
 1. Read `wiki/hot.md`.
 2. Read `wiki/index.md`.
 3. When available, run `python scripts/retrieve.py <vault-path> --query "<query>" --json`.
-4. Read only the most relevant pages from `wiki/sources/`, `wiki/entities/`, `wiki/concepts/`, and `wiki/questions/`.
+4. Read only the most relevant pages from `wiki/sources/`, `wiki/literature/`, `wiki/permanent/`, `wiki/indexes/`, `wiki/entities/`, `wiki/concepts/`, and `wiki/questions/`.
 5. Synthesize an answer with citations to wiki page names.
 
 ## Answer Style

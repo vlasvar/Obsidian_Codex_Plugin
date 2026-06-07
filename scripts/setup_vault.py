@@ -80,6 +80,7 @@ def write_obsidian_config(vault_path: Path) -> list[str]:
                 "collapse-filter": False,
                 "search": "-path:.raw",
                 "colorGroups": [
+                    {"query": "path:wiki/00.inbox", "color": {"a": 1, "rgb": 16753920}},
                     {"query": "path:wiki/concepts", "color": {"a": 1, "rgb": 3447003}},
                     {"query": "path:wiki/sources", "color": {"a": 1, "rgb": 2263842}},
                     {"query": "path:wiki/entities", "color": {"a": 1, "rgb": 10181046}},
@@ -97,6 +98,7 @@ def write_obsidian_config(vault_path: Path) -> list[str]:
         + "\n",
         ".obsidian/snippets/vault-colors.css": (
             "/* Clean-room folder color hints for the generated wiki. */\n"
+            ".nav-folder-title[data-path^=\"wiki/00.inbox\"] { color: #f59e0b; }\n"
             ".nav-folder-title[data-path^=\"wiki/concepts\"] { color: #2563eb; }\n"
             ".nav-folder-title[data-path^=\"wiki/sources\"] { color: #15803d; }\n"
             ".nav-folder-title[data-path^=\"wiki/entities\"] { color: #7e22ce; }\n"
@@ -118,7 +120,11 @@ def refresh_index(vault_path: Path) -> None:
         "- [[compounding-knowledge|Compounding Knowledge]]\n"
         "- [[andrej-karpathy|Andrej Karpathy]]\n\n"
         "## Working Areas\n\n"
+        "- Inbox: `wiki/00.inbox/`\n"
         "- Sources: `wiki/sources/`\n"
+        "- Literature: `wiki/literature/`\n"
+        "- Permanent notes: `wiki/permanent/`\n"
+        "- Indexes: `wiki/indexes/`\n"
         "- Concepts: `wiki/concepts/`\n"
         "- Entities: `wiki/entities/`\n"
         "- Questions: `wiki/questions/`\n",

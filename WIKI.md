@@ -22,7 +22,11 @@ vault/
 |   |-- log.md
 |   |-- hot.md
 |   |-- overview.md
+|   |-- 00.inbox/
 |   |-- sources/
+|   |-- literature/
+|   |-- permanent/
+|   |-- indexes/
 |   |-- concepts/
 |   |-- entities/
 |   |-- questions/

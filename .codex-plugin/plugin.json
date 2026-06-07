@@ -1,7 +1,7 @@
 {
   "name": "obsidian-codex-plugin",
   "version": "0.1.0+codex.20260607064828",
-  "description": "Codex-native Obsidian wiki workflows for setup, ingest, retrieval, linting, research, canvas, methodology modes, and session memory.",
+  "description": "Codex-native Obsidian wiki workflows for dropping loose notes into an inbox, then organizing them into durable knowledge over time.",
   "author": {
     "name": "Obsidian Codex Plugin contributors"
   },
@@ -18,8 +18,8 @@
   "skills": "./skills/",
   "interface": {
     "displayName": "Obsidian Codex Plugin",
-    "shortDescription": "Run a self-organizing Obsidian wiki from Codex.",
-    "longDescription": "A clean-room Codex-native Obsidian wiki plugin that scaffolds seeded vaults, ingests sources into linked notes, retrieves cited pages, lints wiki health, saves sessions, plans research, manages canvases, and configures methodology modes using filesystem-first helpers with optional transport detection.",
+    "shortDescription": "Turn loose Obsidian notes into a self-organizing wiki.",
+    "longDescription": "A clean-room Codex-native Obsidian wiki plugin that scaffolds an inbox-first vault, lets users drop loose Markdown notes into wiki/00.inbox, and helps organize them into sources, literature notes, permanent notes, indexes, cited retrieval, lint reports, saved sessions, research plans, canvases, and methodology modes using filesystem-first helpers with optional transport detection.",
     "developerName": "Obsidian Codex Plugin contributors",
     "category": "Productivity",
     "capabilities": [
@@ -31,6 +31,7 @@
     ],
     "defaultPrompt": [
       "Set up an Obsidian wiki vault.",
+      "Organize the loose notes in my wiki inbox.",
       "Ingest this source into my wiki.",
       "Query my wiki with citations.",
       "Save this conversation to my wiki.",
