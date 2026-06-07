@@ -1,0 +1,42 @@
+{
+  "name": "obsidian-codex-plugin",
+  "version": "0.1.0+codex.20260607064828",
+  "description": "Codex-native Obsidian wiki workflows for setup, ingest, retrieval, linting, research, canvas, methodology modes, and session memory.",
+  "author": {
+    "name": "Obsidian Codex Plugin contributors"
+  },
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/AgriciDaniel/claude-obsidian",
+  "keywords": [
+    "obsidian",
+    "codex",
+    "wiki",
+    "knowledge-base",
+    "markdown",
+    "second-brain"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Obsidian Codex Plugin",
+    "shortDescription": "Run a self-organizing Obsidian wiki from Codex.",
+    "longDescription": "A clean-room Codex-native Obsidian wiki plugin that scaffolds seeded vaults, ingests sources into linked notes, retrieves cited pages, lints wiki health, saves sessions, plans research, manages canvases, and configures methodology modes using filesystem-first helpers with optional transport detection.",
+    "developerName": "Obsidian Codex Plugin contributors",
+    "category": "Productivity",
+    "capabilities": [
+      "Write",
+      "Local files",
+      "Knowledge management",
+      "Research",
+      "Retrieval"
+    ],
+    "defaultPrompt": [
+      "Set up an Obsidian wiki vault.",
+      "Ingest this source into my wiki.",
+      "Query my wiki with citations.",
+      "Save this conversation to my wiki.",
+      "Run autoresearch on this topic.",
+      "Create a wiki canvas.",
+      "Lint my Obsidian wiki."
+    ]
+  }
+}

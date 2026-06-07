@@ -1,0 +1,10 @@
+
+# Beads / Dolt files (added by bd init)
+.dolt/
+*.db
+.beads-credential-key
+.beads/
+.beads/proxieddb/
+__pycache__/
+*.py[cod]
+.pytest_cache/
