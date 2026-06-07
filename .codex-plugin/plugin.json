@@ -1,12 +1,13 @@
 {
   "name": "obsidian-codex-plugin",
-  "version": "0.1.0+codex.20260607064828",
+  "version": "0.1.0",
   "description": "Codex-native Obsidian wiki workflows for dropping loose notes into an inbox, then organizing them into durable knowledge over time.",
   "author": {
     "name": "Obsidian Codex Plugin contributors"
   },
   "license": "Apache-2.0",
-  "homepage": "https://github.com/AgriciDaniel/claude-obsidian",
+  "homepage": "https://github.com/vlasvar/Obsidian_Codex_Plugin",
+  "repository": "https://github.com/vlasvar/Obsidian_Codex_Plugin",
   "keywords": [
     "obsidian",
     "codex",
