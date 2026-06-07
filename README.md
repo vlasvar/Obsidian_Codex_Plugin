@@ -2,11 +2,26 @@
 
 ![Obsidian Codex Plugin hero](assets/codex-hero.png)
 
-A clean-room Codex-native plugin for turning Markdown source folders into a maintained Obsidian wiki.
+This vault is designed for real note-taking: capture first, organize later.
 
-It helps Codex set up a vault, ingest notes, create source/concept/entity pages, build a retrieval index, lint graph health, save useful conversations, and keep an Obsidian workspace navigable over time.
+You can throw rough thoughts into `wiki/hot.md`, store old notes and pasted material in `wiki/sources/`, and gradually turn the useful pieces into literature notes, permanent notes, and topic indexes. The goal is not to make you perfectly categorize every idea upfront. The goal is to give messy thinking a place to land, then help it become durable knowledge over time.
 
 > Educational project notice: this project is experimental software for learning, research, and personal knowledge-management workflows. It is provided as-is under Apache-2.0. You are responsible for how you use it, the notes you ingest, and any decisions you make from generated wiki content.
+
+## Capture First, Organize Later
+
+Use the vault like a lightweight thinking workflow, not a filing bureaucracy:
+
+1. Capture anything quickly in `wiki/hot.md`.
+   Write random thoughts, rough notes, reminders, ideas, and unfinished fragments without stopping to decide where they belong.
+2. Preserve old or messy material in `wiki/sources/`.
+   Drop in old notes, copied documents, research dumps, or unprocessed material so the vault becomes useful immediately.
+3. Process notes gradually.
+   Move notes from books, videos, articles, podcasts, research, or conversations into `wiki/literature/`. Distill long-term insights and personal ideas into `wiki/permanent/`.
+4. Build maps of knowledge in `wiki/indexes/`.
+   Create topic maps and navigation pages for areas like AI, health, business ideas, projects, or anything else you want to think about over time.
+
+The folders are not rules. They are a lightweight path from fast capture to organized knowledge.
 
 ## Demo
 
@@ -18,17 +33,16 @@ After ingesting 50 mixed sample Markdown files, Obsidian graph view starts to sh
 
 Large language model sessions are powerful, but they forget context unless you give them a durable place to write. Obsidian is a natural home for that context because it is local-first, Markdown-based, graph-friendly, and pleasant to inspect manually.
 
-This plugin makes Codex act like a wiki maintainer:
+This clean-room Codex-native plugin helps Codex act like a wiki maintainer:
 
-- Raw source material goes into `.raw/`.
-- Summaries go into `wiki/sources/`.
-- Extracted ideas go into `wiki/concepts/`.
-- People, projects, places, tools, and organizations go into `wiki/entities/`.
-- Saved questions and conversations go into `wiki/questions/`.
-- `wiki/hot.md` stores the latest working context.
+- `wiki/hot.md` stores the latest working context and scratchpad material.
+- `wiki/sources/` preserves raw, old, pasted, or unprocessed material.
+- `wiki/literature/`, `wiki/permanent/`, and `wiki/indexes/` support the zettelkasten path from source notes to durable ideas and topic maps.
+- Other modes can also create folders such as `wiki/concepts/`, `wiki/entities/`, `wiki/questions/`, `wiki/maps/`, or PARA folders.
+- `.raw/` tracks ingested source files when Codex imports external Markdown.
 - `.vault-meta/retrieval-index.json` helps Codex find relevant pages before answering.
 
-The result is not just a pile of Markdown. It is a local knowledge graph that Codex can keep maintaining and Obsidian can visualize.
+The result is not just a pile of Markdown. It is a local knowledge graph that can start messy, become more organized over time, and remain readable in Obsidian.
 
 ## Inspiration And Attribution
 
@@ -44,7 +58,7 @@ This repository is a clean-room Codex-native implementation:
 ## What It Does
 
 - Sets up a ready-to-open Obsidian vault.
-- Supports `generic`, `lyt`, `para`, and `zettelkasten` modes.
+- Leads naturally with `zettelkasten` mode while still supporting `generic`, `lyt`, and `para` modes.
 - Ingests Markdown/text sources into linked wiki pages.
 - Builds a lightweight retrieval index for cited answers.
 - Lints the vault for dead links, missing frontmatter, orphans, duplicate titles, weak source attribution, and stale hot cache.
@@ -165,6 +179,9 @@ vault/
 |   |-- hot.md
 |   |-- overview.md
 |   |-- sources/
+|   |-- literature/
+|   |-- permanent/
+|   |-- indexes/
 |   |-- entities/
 |   |-- concepts/
 |   |-- questions/
@@ -176,7 +193,9 @@ vault/
 `-- .obsidian/
 ```
 
-`.raw/` is treated as source storage. Codex writes synthesized wiki notes under `wiki/`.
+In zettelkasten mode, `wiki/hot.md`, `wiki/sources/`, `wiki/literature/`, `wiki/permanent/`, and `wiki/indexes/` form the main user workflow. The plugin also supports `generic`, `lyt`, and `para` modes, which may add or emphasize other folders such as `wiki/concepts/`, `wiki/entities/`, `wiki/questions/`, `wiki/maps/`, `wiki/projects/`, `wiki/areas/`, `wiki/resources/`, and `wiki/archive/`.
+
+`.raw/` is treated as source storage for ingested files. Codex writes maintained wiki notes under `wiki/`.
 
 ## Helper Scripts
 
@@ -196,12 +215,12 @@ python scripts\dashboard.py C:\path\to\vault --json
 
 ## Real-Life Workflow
 
-1. Keep raw notes, exported docs, or copied Markdown in a source folder.
-2. Ask Codex to set up or detect your Obsidian wiki vault.
-3. Ask Codex to ingest the source folder.
-4. Open Obsidian to inspect the generated graph, folders, and links.
-5. Ask Codex questions against the wiki.
-6. Periodically ask Codex to lint the vault and save important conversations.
+1. Capture rough thoughts in `wiki/hot.md` whenever you need a fast place to write.
+2. Put old notes, exported docs, copied Markdown, and unprocessed material in `wiki/sources/`.
+3. Ask Codex to set up or detect your Obsidian wiki vault and ingest source folders when useful.
+4. Gradually move useful material into `wiki/literature/`, `wiki/permanent/`, and `wiki/indexes/`.
+5. Open Obsidian to inspect the generated graph, folders, and links.
+6. Ask Codex questions against the wiki, lint the vault, and save important conversations.
 
 Obsidian remains the place you browse, edit, and visualize. Codex becomes the assistant that files, links, retrieves, and audits.
 
