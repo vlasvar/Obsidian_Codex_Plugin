@@ -1,6 +1,6 @@
 # Obsidian Codex Plugin
 
-![Obsidian Codex Plugin hero](assets/codex-hero.png)
+![Obsidian Codex Plugin hero](assets/obsidian_codex_hero.svg)
 
 Let Codex maintain your Obsidian vault.
 
