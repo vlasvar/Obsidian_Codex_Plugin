@@ -22,8 +22,9 @@ vault/
 |   |-- log.md
 |   |-- hot.md
 |   |-- overview.md
-|   |-- 00.inbox/
 |   |-- sources/
+|   |-- archive/
+|   |   `-- originals/
 |   |-- literature/
 |   |-- permanent/
 |   |-- indexes/

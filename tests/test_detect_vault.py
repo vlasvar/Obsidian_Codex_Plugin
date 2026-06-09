@@ -14,8 +14,8 @@ class DetectVaultTests(unittest.TestCase):
 
             self.assertIn("wiki/index.md", result["created"])
             self.assertTrue((vault / ".raw" / ".manifest.json").exists())
-            self.assertTrue((vault / "wiki" / "00.inbox").is_dir())
             self.assertTrue((vault / "wiki" / "sources").is_dir())
+            self.assertTrue((vault / "wiki" / "archive" / "originals").is_dir())
             self.assertTrue((vault / "wiki" / "literature").is_dir())
             self.assertTrue((vault / "wiki" / "permanent").is_dir())
             self.assertTrue((vault / "wiki" / "indexes").is_dir())

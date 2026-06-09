@@ -1,11 +1,11 @@
 ---
 name: obsidian-ingest
-description: Ingest Markdown or text sources into a local Obsidian wiki vault. Use when the user says ingest this, add this to my wiki, process this source, or file this into Obsidian.
+description: Ingest Markdown or text sources into a local Obsidian wiki vault. Use when the user says ingest this, add this to my wiki, process this source, organize my vault, or file this into Obsidian.
 ---
 
 # Obsidian Ingest
 
-Read the source, synthesize wiki notes, and maintain the vault indexes.
+Read sources or loose vault notes, synthesize wiki notes, and maintain the vault indexes.
 The v1 transport is direct filesystem access only.
 
 ## Before Writing
@@ -15,17 +15,20 @@ The v1 transport is direct filesystem access only.
 3. Read `wiki/index.md` to avoid duplicate pages.
 4. Check `.raw/.manifest.json` for unchanged sources when `scripts/manifest.py` is available.
 
-## Inbox Flow
+## Whole-Vault Maintenance Flow
 
-When the user asks to organize loose notes, check `wiki/00.inbox/` first.
+When the user asks to organize or maintain the vault, scan the whole vault for Markdown notes that are outside maintained/generated folders.
 
-For each Markdown file in `wiki/00.inbox/`:
+Skip obvious internal or generated locations such as `.git/`, `.obsidian/`, `.raw/`, `.vault-meta/`, `_templates/`, attachments folders, and maintained output under `wiki/archive/originals/`.
+
+For each loose or mixed Markdown file:
 
 1. Read the note completely.
-2. Decide whether it is raw source material, a literature note, a permanent note, or an index/topic map.
-3. Move or rewrite the maintained note under `wiki/sources/`, `wiki/literature/`, `wiki/permanent/`, or `wiki/indexes/`.
-4. Update `wiki/index.md`, prepend one entry to `wiki/log.md`, and refresh `wiki/hot.md`.
-5. Leave `wiki/00.inbox/` empty only after the material has been safely represented elsewhere.
+2. Split mixed capture material into useful atomic source, literature, permanent, entity, concept, or index notes.
+3. Create or update maintained notes under `wiki/sources/`, `wiki/literature/`, `wiki/permanent/`, `wiki/indexes/`, `wiki/entities/`, `wiki/concepts/`, or `wiki/questions/`.
+4. Preserve provenance with a link to the original note path and a relevant snippet.
+5. Move the original messy capture into `wiki/archive/originals/` only after the material has been safely represented elsewhere.
+6. Update `wiki/index.md`, prepend one entry to `wiki/log.md`, refresh `wiki/hot.md`, and rebuild retrieval.
 
 ## Single Source Flow
 
@@ -47,6 +50,7 @@ For each source:
 - Prefer short atomic notes over long mixed-topic pages.
 - Update existing pages when they clearly match; do not create duplicates.
 - Do not modify raw source files under `.raw/`.
+- Do not delete original user notes automatically; archive originals after organization.
 
 ## Helper Script
 

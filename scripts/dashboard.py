@@ -27,8 +27,8 @@ def write_dashboard(vault_path: Path) -> dict[str, str]:
         "description": "Clean-room dashboard metadata for the Codex-maintained Obsidian wiki.",
         "updated": now,
         "views": [
-            {"name": "Inbox", "folder": "wiki/00.inbox", "type": "inbox"},
             {"name": "Sources", "folder": "wiki/sources", "type": "source"},
+            {"name": "Archived Originals", "folder": "wiki/archive/originals", "type": "archive"},
             {"name": "Literature", "folder": "wiki/literature", "type": "literature"},
             {"name": "Permanent", "folder": "wiki/permanent", "type": "permanent"},
             {"name": "Indexes", "folder": "wiki/indexes", "type": "index"},
@@ -45,8 +45,8 @@ def write_dashboard(vault_path: Path) -> dict[str, str]:
         "- [[index|Wiki Index]]\n"
         "- [[hot|Hot Cache]]\n"
         "- [[log|Wiki Log]]\n"
-        "- Inbox: `wiki/00.inbox/`\n"
         "- Sources: `wiki/sources/`\n"
+        "- Archived originals: `wiki/archive/originals/`\n"
         "- Literature: `wiki/literature/`\n"
         "- Permanent notes: `wiki/permanent/`\n"
         "- Indexes: `wiki/indexes/`\n"

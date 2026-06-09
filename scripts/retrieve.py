@@ -15,6 +15,17 @@ except ImportError:
     from lockfile import write_text_locked
 
 TOKEN_RE = re.compile(r"[A-Za-z0-9][A-Za-z0-9_-]*")
+EXCLUDED_DIRS = {
+    ".git",
+    ".obsidian",
+    ".raw",
+    ".trash",
+    ".vault-meta",
+    "_attachments",
+    "_templates",
+    "attachments",
+    "node_modules",
+}
 
 
 def _tokens(text: str) -> list[str]:
@@ -31,17 +42,24 @@ def _title_from_text(path: Path, text: str) -> str:
     return path.stem.replace("-", " ").replace("_", " ").title()
 
 
-def _wiki_pages(vault_path: Path) -> list[Path]:
-    wiki = vault_path / "wiki"
-    if not wiki.exists():
+def _vault_pages(vault_path: Path) -> list[Path]:
+    if not vault_path.exists():
         return []
-    return sorted(path for path in wiki.rglob("*.md") if path.is_file())
+    pages: list[Path] = []
+    for path in vault_path.rglob("*.md"):
+        if not path.is_file():
+            continue
+        rel_parts = path.relative_to(vault_path).parts
+        if any(part in EXCLUDED_DIRS for part in rel_parts):
+            continue
+        pages.append(path)
+    return sorted(pages)
 
 
 def build_retrieval_index(vault_path: Path) -> dict[str, object]:
     vault_path = vault_path.expanduser().resolve()
     pages: dict[str, dict[str, object]] = {}
-    for path in _wiki_pages(vault_path):
+    for path in _vault_pages(vault_path):
         text = path.read_text(encoding="utf-8")
         rel = path.relative_to(vault_path).as_posix()
         counts = Counter(_tokens(text))
@@ -55,7 +73,7 @@ def build_retrieval_index(vault_path: Path) -> dict[str, object]:
     meta.mkdir(parents=True, exist_ok=True)
     result: dict[str, object] = {
         "updated": datetime.now(timezone.utc).replace(microsecond=0).isoformat(),
-        "strategy": "lexical",
+        "strategy": "whole-vault lexical",
         "pages": pages,
     }
     write_text_locked(meta / "retrieval-index.json", json.dumps(result, indent=2) + "\n")
@@ -66,7 +84,7 @@ def search_wiki(vault_path: Path, query: str, *, limit: int = 5) -> list[dict[st
     vault_path = vault_path.expanduser().resolve()
     query_terms = set(_tokens(query))
     results: list[dict[str, object]] = []
-    for path in _wiki_pages(vault_path):
+    for path in _vault_pages(vault_path):
         text = path.read_text(encoding="utf-8")
         body_terms = Counter(_tokens(text))
         matched_terms = {term for term in query_terms if body_terms[term] > 0}

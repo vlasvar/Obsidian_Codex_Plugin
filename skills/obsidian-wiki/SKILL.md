@@ -5,8 +5,10 @@ description: Set up or maintain a local Obsidian wiki vault from Codex. Use when
 
 # Obsidian Wiki
 
-You are maintaining a local-first Obsidian wiki vault through the filesystem.
+You are maintaining a local-first Obsidian vault through the filesystem.
 Use direct filesystem access by default. REST, MCP, and Obsidian CLI transports are optional and must be detected before use.
+
+Core promise: the user writes naturally anywhere in the vault, and Codex keeps the vault organized, searchable, linked, and recoverable.
 
 ## Vault Structure
 
@@ -21,8 +23,9 @@ vault/
 |   |-- log.md
 |   |-- hot.md
 |   |-- overview.md
-|   |-- 00.inbox/
 |   |-- sources/
+|   |-- archive/
+|   |   `-- originals/
 |   |-- literature/
 |   |-- permanent/
 |   |-- indexes/
@@ -35,9 +38,9 @@ vault/
 `-- .obsidian/
 ```
 
-`.raw/` contains source material and should not be edited except for `.raw/.manifest.json`.
+`.raw/` contains imported source tracking and should not be edited except for `.raw/.manifest.json`.
 `wiki/` is the maintained knowledge layer.
-`wiki/00.inbox/` is the user-facing drop zone for loose Markdown notes that have not been categorized yet.
+`wiki/archive/originals/` preserves messy original notes after Codex has organized them.
 
 ## Setup Workflow
 
@@ -46,7 +49,7 @@ vault/
 3. If the user requested LYT, PARA, or Zettelkasten, pass `--mode lyt`, `--mode para`, or `--mode zettelkasten`.
 4. If the setup helper is not available, fall back to `python scripts/detect_vault.py <vault-path> --create`.
 5. Tell the user to open the folder in Obsidian as a vault.
-6. Tell the user they can drop loose notes into `wiki/00.inbox/` and ask Codex to organize the inbox later.
+6. Tell the user they can keep writing anywhere in the vault and ask Codex to maintain or organize the vault later.
 
 ## Hot Cache
 

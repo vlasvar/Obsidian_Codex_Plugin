@@ -11,15 +11,16 @@ Answer from the maintained wiki, not from general memory when the vault has rele
 
 1. Read `wiki/hot.md`.
 2. Read `wiki/index.md`.
-3. When available, run `python scripts/retrieve.py <vault-path> --query "<query>" --json`.
-4. Read only the most relevant pages from `wiki/sources/`, `wiki/literature/`, `wiki/permanent/`, `wiki/indexes/`, `wiki/entities/`, `wiki/concepts/`, and `wiki/questions/`.
-5. Synthesize an answer with citations to wiki page names.
+3. When available, run `python scripts/retrieve.py <vault-path> --query "<query>" --json`; retrieval searches the whole vault while skipping obvious junk/internal folders.
+4. Read only the most relevant pages from the retrieval result, including organized wiki notes and relevant non-wiki vault notes.
+5. Give the exact file path first, then a short relevant snippet or synthesis with citations to wiki page names when available.
 
 ## Answer Style
 
 - Cite pages with wikilinks, for example `[[Concept Name]]`.
 - Distinguish wiki-supported facts from inference.
 - If the wiki lacks evidence, say what is missing and suggest an ingest or research step.
+- If a loose note was found outside the maintained wiki layer, offer to organize it into the wiki and archive the original.
 - After a substantial query, update `wiki/hot.md` with the active thread and key facts.
 
 ## Filing Questions
