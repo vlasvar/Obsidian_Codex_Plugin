@@ -18,5 +18,6 @@ The root README references:
 
 ```markdown
 ![Obsidian Codex Plugin hero](assets/obsidian_codex_hero.svg)
+![Before and after Codex vault maintenance](assets/codex_before_after_hero.svg)
 ![Obsidian graph view after ingesting sample notes](assets/obsidian-graph-view.png)
 ```

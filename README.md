@@ -25,6 +25,8 @@ Use the vault like a real working library, not a filing bureaucracy:
 
 Folders are storage. Wikilinks, index pages, entities, concepts, aliases, and retrieval cues are the source of truth.
 
+![Before and after Codex vault maintenance](assets/codex_before_after_hero.svg)
+
 ## Demo
 
 After ingesting 50 mixed sample Markdown files, Obsidian graph view starts to show a linked working-memory layer:
