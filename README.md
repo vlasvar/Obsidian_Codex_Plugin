@@ -219,6 +219,47 @@ In zettelkasten mode, `wiki/hot.md`, `wiki/sources/`, `wiki/archive/originals/`,
 
 Codex searches Markdown across the vault by default, excluding obvious internal and junk folders. `.raw/` is treated as internal source tracking for imported files. Codex writes maintained wiki notes under `wiki/`, and preserves processed originals under `wiki/archive/originals/`.
 
+## Alternative: Use with Hermes Agent
+
+You do not need the OpenAI Codex CLI to benefit from this workflow. This vault structure and organizational logic are fully compatible with [Hermes Agent](https://hermes-agent.nousresearch.com/docs). 
+
+If you use Hermes, you can leverage the built-in `obsidian-zettelkasten-organizer` skill to maintain your vault using Hermes' native file tools (`read_file`, `write_file`, `search_files`, `patch`, `terminal`).
+
+### How the Agentic Workflow Operates
+
+```mermaid
+graph TD
+    A[📥 User drops raw notes in wiki/00_inbox] --> B[🤖 Hermes Agent triggers obsidian-zettelkasten-organizer]
+    B --> C{🔍 Analyze Note Content}
+    C -->|Raw data, meeting notes| D[📁 Move to wiki/sources/]
+    C -->|Research, articles, videos| E[📁 Move to wiki/literature/]
+    C -->|User's own synthesis/ideas| F[📁 Move to wiki/permanent/]
+    C -->|Ambiguous/Unclear| G[⚠️ Tag #needs-review, leave in place]
+    D & E & F --> H[✨ Enhance: Add YAML frontmatter, tags, and wikilinks]
+    H --> I[🗺️ Update or create wiki/indexes/ topic maps]
+    I --> J[✅ Report summary of actions to user]
+```
+
+### Step-by-Step Setup for Hermes Users
+
+1. **Install the Skill**: Copy the [`hermes-skill/SKILL.md`](hermes-skill/SKILL.md) file from this repository into your Hermes skills directory (e.g., `~/.hermes/skills/note-taking/obsidian-zettelkasten-organizer/SKILL.md`).
+2. **Point Hermes to Your Vault**: Simply ask Hermes:
+   > *"Use the `obsidian-zettelkasten-organizer` skill to check `wiki/00_inbox` and organize any stranded notes in my vault at `/path/to/your/vault`."*
+3. **Review the Output**: Hermes will automatically:
+   - Scan for loose or unfiled notes across the vault.
+   - Route raw material to `sources/`, research to `literature/`, and your syntheses to `permanent/`.
+   - Improve YAML frontmatter and add contextual `[[wikilinks]]`.
+   - Leave ambiguous notes untouched (tagged with `#needs-review`) for your human review.
+   - Provide a clean, bulleted summary of all actions taken.
+
+### Example Agentic Prompts
+
+- **Daily Tidy**: *"Run the obsidian-zettelkasten-organizer skill on my vault. Focus on the 00_inbox folder and report what you moved."*
+- **Theme Discovery**: *"Review my recent permanent notes. If a new overarching theme has emerged, create or update a corresponding map in wiki/indexes/."*
+- **Metadata Sweep**: *"Scan wiki/sources/ for any notes missing the 'type' or 'date' frontmatter fields and patch them."*
+
+This provides the same clean-room, local-first knowledge management benefits without requiring the OpenAI Codex CLI, giving you the flexibility to choose the AI agent that best fits your workflow.
+
 ## Helper Scripts
 
 ```powershell
