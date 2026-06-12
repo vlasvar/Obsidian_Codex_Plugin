@@ -221,7 +221,9 @@ Codex searches Markdown across the vault by default, excluding obvious internal 
 
 ## Alternative: Use with Hermes Agent
 
-You do not need the OpenAI Codex CLI to benefit from this workflow. This vault structure and organizational logic are fully compatible with [Hermes Agent](https://hermes-agent.nousresearch.com/docs). 
+![Hermes Agent + Obsidian Integration](assets/hermes-obsidian-integration.svg)
+
+You do not need the OpenAI Codex CLI to benefit from this workflow.
 
 If you use Hermes, you can leverage the built-in `obsidian-zettelkasten-organizer` skill to maintain your vault using Hermes' native file tools (`read_file`, `write_file`, `search_files`, `patch`, `terminal`).
 
